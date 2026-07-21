@@ -17,6 +17,8 @@ const corsOptions = {
     credentials: true,
     optionsSuccessStatus: 200
 };
+
+console.log("CLIENT_URL =", process.env.CLIENT_URL);
 // Middlewares
 app.use(cors(corsOptions));
 app.use(express.json());
