@@ -147,15 +147,16 @@ CLOUDINARY_API_SECRET=
 
 ---
 
-## 📸 Screenshots
+## Job Portal - Project Links
 
-Add screenshots of:
+## Live Demo
+https://job-portal-full-stack-tau.vercel.app
 
-- Home Page
-- Login Page
-- Job Listings
-- Recruiter Dashboard
-- Applicant Management
+## Frontend
+Vercel
+
+## Backend API
+https://job-portal-full-stack-2ci1.onrender.com
 
 ---
 
