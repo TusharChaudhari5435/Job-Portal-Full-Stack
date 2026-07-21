@@ -16,7 +16,7 @@ const register = async (req, res) => {
 
     let cloudinaryResponse = null;
 
-    if(req.file){
+    if (req.file) {
       cloudinaryResponse = await uploadOnCloudinary(req.file);
 
       if (!cloudinaryResponse) {
@@ -43,9 +43,9 @@ const register = async (req, res) => {
       password: hashedPassword,
       role,
       phoneNumber,
-      profile:{
-        profilePhoto:cloudinaryResponse ? cloudinaryResponse.secure_url : "",
-      }
+      profile: {
+        profilePhoto: cloudinaryResponse ? cloudinaryResponse.secure_url : "",
+      },
     });
 
     return res.status(201).json({
@@ -107,7 +107,7 @@ const login = async (req, res) => {
     });
 
     user = {
-      _id : user._id,
+      _id: user._id,
       fullName: user.fullName,
       phoneNumber: user.phoneNumber,
       email: user.email,
@@ -118,9 +118,10 @@ const login = async (req, res) => {
     return res
       .status(200)
       .cookie("token", token, {
-        maxAge: 1 * 24 * 60 * 60 * 1000,
         httpOnly: true,
-        sameSite: "lax",
+        secure: true,
+        sameSite: "none",
+        maxAge: 24 * 60 * 60 * 1000,
       })
       .json({
         message: `Welcome back ${user.fullName}`,
@@ -141,9 +142,10 @@ const logout = async (req, res) => {
     return res
       .status(200)
       .cookie("token", "", {
-        maxAge: 0,
         httpOnly: true,
-        sameSite: "lax",
+        secure: true,
+        sameSite: "none",
+        maxAge: 0,
       })
       .json({
         message: "Logged out successfully",
